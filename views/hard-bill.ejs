@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Personal billing application for users having a hard time making and checking billings.">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Hard BILL">
+        <meta property="og:description" content="Personal billing application for users having a hard time making and checking billings.">
+        <link rel="stylesheet" href="/styling/csv-styling.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/favicon/site.webmanifest">
+        <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <title>personal billing | Hard Bill</title>
+    </head>
+    <body>
+        <span class="span-increment hide" draggable="true"tabindex="0">+</span>
+        <div class="main-container">
+            <div class="main-header">
+                <button onclick="check_bill()">billing analyzer</button>
+                <button class="Save">Save</button>
+                <button class="ResetAll">Reset All</button>
+                <a href="/aboutUs" target="_blank">About Us</a>
+            </div>
+            <div class="main-content">
+                <div class="table-container drag-window">
+                    <div class="table-header drag-window-header">
+                        <button onclick="show_addOn()">Make Data</button>
+                        <button class="sort-and-cluster">sort and cluster</button>
+                        <button onclick="convert_to_csv()">Convert to File</button>
+                        <button class="clear">Clear Table</button>
+                        <button onclick="show_reference()">Entry Reference</button>
+                    </div>
+                    <table class="table-body">
+                        <thead class="table-thead"></thead>
+                    </table>
+                </div>
+                <div class="add-on-container hide drag-window">
+                    <div class="add-on-header content-header drag-window-header">
+                        <button onclick="adv_add_on_row()">add rows</button>
+                        <button onclick="insertAll(1)">To Main Table</button>
+                        <button class="clear">Clear Table</button>
+                        <button onclick="addCSV()">Add From CSV</button>
+                        <button onclick="close_addOn(event)">X</button>
+                    </div>
+                    <table class="add-on-body content-body">
+                        <thead class="add-on-thead"></thead>
+                        <tbody class="add-on-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="init-modal">
+                    <div class="init-modal-container">
+                        <div class="init-modal-header">
+                            <input type="number" class="column-num no-spinner" placeholder="number of column" onkeydown="numberKeyDown(event, 1)">
+                            <button class="init-table">Create Column</button>
+                            <button class="btn-make-table">Confirm</button>
+                            <button class="clear-init">Clear</button>
+                        </div>
+                        <div class="init-modal-body"></div>
+                    </div>
+                    <div class="init-calc">
+                        <div class="init-container">
+                            <span>calculation</span>
+                            <div class="input-container">
+                                <input type="text" class="input-calc">
+                            </div>
+                            <div class="init-header-buttons">
+                                <button class="calc-confirm">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="sort-cluster dropdown drag-window" data-Z="1">
+                    <div class="dropdown-content">
+                        <div class="dropdown-title">Sort and Cluster</div>
+                        <div class="sort-cluster-h dropdown-head drag-window-header">
+                            <button class="update">update table</button>
+                            <button onclick="toggle()">X</button>
+                        </div>
+                        <div class="sort-cluster-b dropdown-body">
+                            <div class="selection-container">
+                                <div class="custom-select">
+                                    <div class="select-title">Cluster:</div>
+                                    <div class="select-wrapper">
+                                        <select class="select-cluster"></select>
+                                    </div>
+                                </div>
+                                <div class="custom-select">
+                                    <div class="select-title">Sort:</div>
+                                    <div class="select-wrapper">
+                                        <select class="select-sort"></select>
+                                    </div>
+                                    <button id="addButton" onclick="addSort()">Add New</button>
+                                </div>
+                            </div>
+                            <div class="sorting-container">
+                                <div class="sorting-header">Sorting Container</div>
+                                <div class="container" id="container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reference-dd dropdown drag-window" data-Z="2">
+                    <div class="dropdown-content">
+                        <div class="dropdown-title">Entry Table</div>
+                        <div class="reference-h dropdown-head drag-window-header">
+                            <button class="add-new-reference">new entry</button>
+                            <button class="update-reference">use entry</button>
+                            <button class="reference-escape">X</button>
+                        </div>
+                        <div class="reference-b dropdown-body">
+                            <table class="body-list-child">
+                                <thead class="added-header not-sticky"></thead>
+                                <tbody class="added-list"></tbody>
+                                <thead class="adding-header not-sticky"></thead>
+                                <tbody class="adding-list"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="adv-add-row-dd dropdown drag-window" data-Z="3">
+                    <div class="dropdown-content">
+                        <div class="dropdown-title">Rows Table</div>
+                        <div class="adv-add-row-h dropdown-head drag-window-header">
+                            <button class="btn-adv-add-row">add multiple row</button>
+                            <input type="text" class="number-input no-spinner" style="width: 100px;" placeholder="number of row" onkeydown="numberKeyDown(event, 1)">
+                            <button class="btn-to-add-container" onclick="insertAll(0)">to lobby table</button>
+                            <button class="escape">X</button>
+                        </div>
+                        <div class="adv-add-row-b dropdown-body">
+                            <table class="adv-add-table">
+                                <thead class="adv-add-thead"></thead>
+                                <tbody class="adv-add-tbody"></tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+                <div class="check-page">
+                    <div class="check-dd dropdown drag-window">
+                        <div class="dropdown-content">
+                            <div class="dropdown-title">show Data</div>
+                            <div class="check-h dropdown-head drag-window-header">
+                                <button class="automate-box">Automate Check</button>
+                                <button class="check-escape">X</button>
+                            </div>
+                            <div class="check-b dropdown-body">
+                                <table class="check-table">
+                                    <thead class="check-thead"></thead>
+                                    <tbody class="check-tbody"></tbody>
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="check-data dropdown drag-window">
+                        <div class="dropdown-content">
+                            <div class="dropdown-title">analyze data</div>
+                            <div class="check-data-h dropdown-head drag-window-header"></div>
+                            <div class="check-data-b dropdown-body">
+                                <div class="check-data-add-on">
+                                    <select class="check-select">
+                                        <option value="calculate">Check Column Calculation</option>
+                                        <option value="matching">Check Matching Rows</option>
+                                    </select>
+                                    <button class="check-data-add">Add Analyzer</button>
+                                </div>
+                                <div class="check-data-add-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="check-legend dropdown drag-window">
+                        <div class="dropdown-content">
+                            <div class="dropdown-title">Legend</div>
+                            <div class="check-legend-h dropdown-head drag-window-header">
+                                <button class="check-legend-escape">X</button>
+                            </div>
+                            <div class="check-legend-b dropdown-body">
+                                <table class="check-legend-table">
+                                    <thead class="check-legend-thead">
+                                        <tr>
+                                            <th>Color</th>
+                                            <th>Match</th>
+                                            <th>Count</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="check-legend-tbody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/behavior/csv-behavior.js"></script>
+    <script src="/behavior/insertion.js"></script>
+    <script src="/behavior/sortAndCluster.js"></script>
+    <script src="/behavior/web-to-csv.js"></script>
+    <script src="/behavior/csv-conversion.js"></script>
+</html>
