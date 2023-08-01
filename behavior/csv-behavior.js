@@ -11,10 +11,6 @@ class Data{
         this.init_table = {
             cell_num :0,
             my_cell : {
-                // quant: {dataName: 'quantity', type: 'number', times: '0-1', adapt: 'dynamic'},
-                // super: {dataName: 'super_text', type: 'text', times: '1', adapt: 'super'},
-                // val: {dataName: 'value', type: 'number', times: '1', adapt: 'fixed'},
-                // quants :{dataName: 'quantity', type: 'number', times: '0-1', adapt: 'dynamic'}
             },
             cellCalc: {
                 columnCalc:{
@@ -24,30 +20,9 @@ class Data{
         },
         this.reference = {
             reference_color:{
-                // 'super1': 'white',
-                // 'super2': 'yellow',
-                // 'super3': 'green'
             },
             reference_post:[],
             current_reference: {
-                // super1: [     
-                //   {name: 'quant', value: 0, type: 'number', adapt: 'dynamic'},
-                //   {name: 'super', value: 'super1', type: 'text', adapt: 'super'},
-                //   {name: 'val', value: 3, type: 'number', adapt: 'fixed'},
-                //   {name: 'quans', value: 0, type: 'number', adapt: 'dynamic'}
-                // ],
-                // super2: [
-                //   {name: 'quant', value: 0, type: 'number', adapt: 'dynamic'},
-                //   {name: 'super', value: 'super2', type: 'text', adapt: 'super'},
-                //   {name: 'val', value: 2, type: 'number', adapt: 'fixed'},
-                //   {name: 'quans', value: 0, type: 'number', adapt: 'dynamic'}
-                // ],
-                // super3: [
-                //   {name: 'quant', value: 0, type: 'number', adapt: 'dynamic'},
-                //   {name: 'super', value: 'super3', type: 'text', adapt: 'super'},
-                //   {name: 'val', value: 1, type: 'number', adapt: 'fixed'},
-                //   {name: 'quans', value: 0, type: 'number', adapt: 'dynamic'}
-                // ]
             }
         },
         this.table_data = {
