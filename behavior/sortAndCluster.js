@@ -229,14 +229,11 @@ function sortNestedArrays(arr, indices) {
   let button = document.getElementById('addButton');
   function addSort(){
     let myColumn = Object.keys(data.init_table.my_cell);
-    console.log(data.table_data.current_data.sortingReference.length)
-    console.log(myColumn.length)
     if(data.table_data.current_data.sortingReference.length < myColumn.length && data.sortAndCluster.pickedIndex > -1){
         let newDraggable = document.createElement('div');
         let selectSort = document.querySelector('.select-sort');
         newDraggable.setAttribute('draggable', 'true');
         newDraggable.setAttribute('class', 'draggable');
-        console.log(data.sortAndCluster.pickedIndex)
         newDraggable.innerHTML = myColumn[data.sortAndCluster.pickedIndex]
   
         const container = document.getElementById('container');
@@ -289,3 +286,14 @@ function sortNestedArrays(arr, indices) {
   selectSort.addEventListener('change', () => {
     data.sortAndCluster.pickedIndex = selectSort.value;
   })
+  function makeAddSort(){
+    if(storedData !== null){
+      let stored = JSON.parse(storedData);
+      let sort = stored.sortingReference;
+      for(let i = 0; i < sort.length; i++){
+        data.sortAndCluster.pickedIndex = sort[i];
+        addSort();
+      }
+    }
+  }
+  makeAddSort()
