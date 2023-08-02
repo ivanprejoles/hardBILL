@@ -290,13 +290,13 @@ let ownTable = document.createElement('table');
         if(evaluateArithmeticEquation(tempInput, data.check.column)){
           approved = true;
         }else{
-          customAlert('Refer to the example equation for guidance:\n\n  A = B + 1\n  A = (B + A)', 2000);
+          customAlert('Refer to the example equation for guidance:\n\n  A = B + 1\n  A = (B + A)', 4000);
         }
       }else{
         if(isAlternateLettersAndEqualSigns(input.value, data.check.column)){
           approved = true;
         }else{
-          customAlert('Refer to the example equation for guidance:\n\n  A = B = C\n  B', 2000);
+          customAlert('Refer to the example equation for guidance:\n\n  A = B = C\n  B', 4000);
         }
       }
       if(approved){
