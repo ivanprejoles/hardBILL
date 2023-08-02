@@ -590,7 +590,8 @@ const makeColumn = (rowElement, lobby_data, data_post,  newData, selected_opt_in
                 }
                 event.preventDefault();
                 let currentElement = columnElement;
-                switch(key){
+                try{
+                    switch(key){
                     case 0:
                         while(childrens.indexOf(currentElement) > 0){
                             currentElement = currentElement.previousElementSibling;
@@ -645,6 +646,9 @@ const makeColumn = (rowElement, lobby_data, data_post,  newData, selected_opt_in
                             currentCell.children[0].selectionEnd = currentCell.children[0].value.length;
                         }
                         break;
+                    }
+                }catch(error){
+                    
                 }
             }
         })
