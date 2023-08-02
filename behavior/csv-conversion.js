@@ -421,7 +421,7 @@ function evaluateFormula(arr, formula) {
     let condition = false;
     try {
       condition = arr[i][0][getColumnIndex(newf[0])] == eval(convertedFormula);
-      console.log(arr[i][0][getColumnIndex(newf[0])]+','eval(convertedFormula));
+      console.log(arr[i][0][getColumnIndex(newf[0])]+','+eval(convertedFormula));
     } catch (error) {
       condition = false;
     }
