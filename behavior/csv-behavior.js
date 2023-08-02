@@ -75,7 +75,7 @@ init_btn.addEventListener('click', () => {
     }
     const column_num = document.querySelector('.column-num');
     if(column_num.value === '' || isNaN(column_num.value) || parseInt(column_num.value) >= 27||parseInt(column_num.value) <=1){
-        customAlert('Inserted number of column is not recommended.');
+        customAlert('Inserted number of column is not recommended.',3000);
         return 0;
     }
     data.init_table.cell_num = column_num.value;
@@ -152,7 +152,7 @@ document.querySelector('.calc-confirm').addEventListener('click', (event) => {
         init_calc.classList.remove('dropdown-active');
         calc.columnCalc[calc.selectedColumn] = input.toUpperCase();
     }else{
-        customAlert('Wrong Equation');
+        customAlert('Wrong Equation',3000);
     }
     renewEvent(event)
 })
@@ -229,7 +229,7 @@ maketable.addEventListener('click', () => {
         }
         if(columns[i].querySelector('select').value == 'influential_variable'){
             if(existed){
-                customAlert('- Only one Influencial Variable is allowed.');
+                customAlert('- Only one Influencial Variable is allowed.',4000);
                 return;
             }
             existed = true;
@@ -237,7 +237,7 @@ maketable.addEventListener('click', () => {
         tempCell[columns[i].querySelector('input').value] = data.cell_type[columns[i].querySelector('select').value];
     }
     if(!existed){
-        customAlert('Possible Error:\n\n- No table built.\n- No influencial Variable created.');
+        customAlert('Possible Error:\n\n- No table built.\n- No influencial Variable created.',4000);
         return
     }
     data.init_table.my_cell = tempCell;
@@ -365,7 +365,7 @@ add_row.addEventListener('click', () => {
     if(Object.keys(data.reference.current_reference).length <= 0){
         indexZPost(document.querySelector('.reference-dd'))
         document.querySelector('.reference-dd').classList.add('dropdown-active');
-        customAlert('No Entry Record');
+        customAlert('No Entry Record', 4000);
         return
     }
     const number_input = document.querySelector(".number-input");
@@ -389,7 +389,7 @@ add_row.addEventListener('click', () => {
         makeColumn(rowElement,adv_data, data_post, adv_data[data_post].newData, 0, value_input, adv_color, data_post, false);
         element_container.appendChild(rowElement);
     }else{
-        customAlert('no data');
+        customAlert('no data',4000);
     }   
 });
 function addToLobby(){
@@ -991,7 +991,7 @@ document.querySelector('.ResetAll').addEventListener('click', () => {
     if(confirms){
         if (localStorage.getItem('data') !== null) {
             localStorage.removeItem('data');
-            customAlert('Data successfully deleted from LocalStorage.\n\nThe page will be automatically refreshed after a 3-second delay.')
+            customAlert('Data successfully deleted from LocalStorage.\n\nThe page will be automatically refreshed after a 3-second delay.',4000)
         }
         setTimeout(function() {
             location.reload();
@@ -1017,6 +1017,6 @@ document.querySelector('.Save').addEventListener('click', () => {
             unsortedIndices: data.sortAndCluster.unsortedIndices,
         }
         localStorage.setItem('data', JSON.stringify(dataToSave));
-        customAlert('Data is being saved to localStorage.')
+        customAlert('Data is being saved to localStorage.', 4000)
     }
 })
