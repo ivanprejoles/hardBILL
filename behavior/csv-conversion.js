@@ -505,7 +505,7 @@ function customAlert(message, duration = 2000) {
     alertContainer.remove();
   }, duration);
 }
-
+customAlert('Clearing all browsing data may result in potential removal of your data stored in localStorage.', 6000);
 function replaceColumnLettersWithValues(arr, formula) {
   formula = formula.replace(/([A-Za-z]+)/g, (_, columnLetter) => {
     const columnPosition = getColumnIndex(columnLetter);
