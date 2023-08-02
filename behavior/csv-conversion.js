@@ -420,6 +420,7 @@ function evaluateFormula(arr, formula) {
     const convertedFormula = replaceColumnLettersWithValues(arr, formula, i);
     let condition = false;
     try {
+      console.log(convertedFormula)
       condition = arr[i][0][getColumnIndex(newf[0])] == eval(convertedFormula);
       console.log(arr[i][0][getColumnIndex(newf[0])]+','+eval(convertedFormula));
     } catch (error) {
