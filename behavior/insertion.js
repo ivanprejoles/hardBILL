@@ -105,7 +105,6 @@ function sortNestedArray(arr, indices, newItem) {
     }
     const dataToElementContainer = {};
     for(let i = 0; i < lobby_data.length; i++){
-      console.log('dsa')
       let dataArray = [];
       let eachdata = (saved)? lobby_data[i] : lobby_data[i].data;
       for(let j = 0; j < eachdata.length; j++){
@@ -150,9 +149,7 @@ function sortNestedArray(arr, indices, newItem) {
   function checkTable(){
     if(storedData !== null){
         let stored = JSON.parse(storedData);
-        console.log('working')
         addToTable(stored.current_data);   
-        console.log('worked')
     }
 }
 checkTable()
