@@ -57,11 +57,9 @@ class Data{
 
 const data = new Data();
 const storedData = localStorage.getItem('data');
-console.log(storedData)
 function getLocal(){
     if(storedData !== null){
         let stored = JSON.parse(storedData)
-        console.log(stored)
         data.init_table = stored.init_table;
         data.reference = stored.reference;
         data.table_data.current_data.groupingReference = stored.groupingReference;
@@ -771,7 +769,6 @@ increment.addEventListener('mouseup', () =>{
     increment.style.left='';
 })
 function draggingOver(event){
-    console.log('dragover')
     event.preventDefault();
 }
 function splittingValue(value){
@@ -831,7 +828,6 @@ function drop(event, anyData){
         start++
         for(let i = start; i <= end; i++){
             splitValue[1] = (condition) ? splitValue[1] + 1 : '';
-            console.log(splitValue[0]+splitValue[1])
             data.increment.parent.children[i].children[Index].innerHTML =  splitValue[0]+splitValue[1];
             anyData[i].data[Index].value = splitValue[0]+splitValue[1];
             anyData[i].newData[data.increment.cell[1]] = splitValue[0]+splitValue[1];
@@ -973,7 +969,6 @@ function indexZPost(dropdown, down){
         for(let i = 0; i < data.sortAndCluster.index.length; i++){
             let value = 20+i;
             let selector = `.dropdown[data-Z="${data.sortAndCluster.index[i]}"]`;
-            console.log(selector)
             document.querySelector(selector).style.zIndex = value.toString(); 
         }
     }
