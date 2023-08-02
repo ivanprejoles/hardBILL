@@ -80,6 +80,7 @@ function convertCSVToArray(csvData, checking) {
           const wordInQuotes = line.substring(openQuoteIndex + 1, i);
           const cleanedWord = wordInQuotes.replace(/,/g, '');
           currentCell = currentCell.slice(0, openQuoteIndex) + cleanedWord + currentCell.slice(i + 1);
+          
         }
       } else if (char === ',' && openingQuotePositions.length === 0) {
         cells.push(currentCell);
@@ -420,6 +421,7 @@ function evaluateFormula(arr, formula) {
     let condition = false;
     try {
       condition = arr[i][0][getColumnIndex(newf[0])] == eval(convertedFormula);
+      console.log(arr[i][0][getColumnIndex(newf[0])]+','eval(convertedFormula));
     } catch (error) {
       condition = false;
     }
