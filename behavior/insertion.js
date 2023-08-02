@@ -2,9 +2,8 @@ function sortNestedArray(arr, indices, newItem) {
     const compareFunction = (a, b) => {
       for (let i = 0; i < indices.length; i++) {
         const index = indices[i];
-        const valueA = a[index].trim();
-        const valueB = b[index].trim();
-  
+        let valueA = (a[index] === undefined || a[index] === 'NaN')? 'undefine'.trim() : a[index].trim();
+        let valueB = (b[index] === undefined || a[index] === 'NaN')? 'undefine'.trim() : b[index].trim();
         const typeA = getType(valueA);
         const typeB = getType(valueB);
   
