@@ -291,11 +291,9 @@ function sortNestedArrays(arr, indices) {
       let stored = JSON.parse(storedData);
       let sort = stored.sortingReference;
       for(let i = 0; i < sort.length; i++){
-        console.log('dsadsa')
         data.sortAndCluster.pickedIndex = sort[i];
         addSort();
       }
-        console.log('22')
     }
   }
   makeAddSort()
