@@ -1,7 +1,7 @@
 const convert_to_csv = () => {
     const current_data = data.table_data.current_data.data;
     if(Object.keys(current_data).length <= 0){
-        customAlert('no data converted')
+        customAlert('no data converted', 3000)
         return 0;
     }
     let csvContent = '';
