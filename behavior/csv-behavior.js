@@ -57,6 +57,7 @@ class Data{
 
 const data = new Data();
 const storedData = localStorage.getItem('data');
+customAlert('Clearing all browsing data may result in potential removal of your data stored in localStorage.');
 function getLocal(){
     if(storedData !== null){
         let stored = JSON.parse(storedData)
