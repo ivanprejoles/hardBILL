@@ -402,7 +402,7 @@ function getColumnIndex(columnLetter) {
   return columnLetter.toUpperCase().charCodeAt(0) - 65;
 }
 
-function replaceColumnLettersWithValues(arr, formula, rowIndex) {
+function replaceColumnLettersWithValue(arr, formula, rowIndex) {
   formula = formula.replace(/([A-Za-z]+)/g, (_, columnLetter) => {
     const columnPosition = getColumnIndex(columnLetter);
     const columnValue = arr[rowIndex][0][columnPosition];
@@ -417,7 +417,7 @@ function evaluateFormula(arr, formula) {
   let newf = formula.substring(0,2);
   formula = formula.substring (2,formula.length);
   for (let i = 0; i < arr.length; i++) {
-    const convertedFormula = replaceColumnLettersWithValues(arr, formula, i);
+    const convertedFormula = replaceColumnLettersWithValue(arr, formula, i);
     let condition = false;
     try {
       console.log(convertedFormula)
