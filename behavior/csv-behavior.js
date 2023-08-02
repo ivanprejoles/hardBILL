@@ -1004,7 +1004,7 @@ document.querySelector('.ResetAll').addEventListener('click', () => {
     }
 })
 document.querySelector('.Save').addEventListener('click', () => {
-    let confirms = confirm('When data is saved, it replaces the previous data.\n\nClearing the Chrome history would also delete the localStorage data.');
+    let confirms = confirm('When data is saved, it replaces the previous data.\nClearing the Chrome history would also delete the localStorage data.');
     if(confirms){
         let newArr = [];
         const tableData = data.table_data.current_data.data;
