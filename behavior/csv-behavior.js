@@ -65,7 +65,6 @@ function getLocal(){
         data.init_table = stored.init_table;
         data.reference = stored.reference;
         data.table_data.current_data.groupingReference = stored.groupingReference;
-        data.table_data.current_data.sortingReference = stored.sortingReference;
         data.sortAndCluster.unsortedIndices = stored.unsortedIndices;
     }
 }
