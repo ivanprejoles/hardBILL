@@ -471,6 +471,9 @@ const makeColumn = (rowElement, lobby_data, data_post,  newData, selected_opt_in
         let input = (type.adapt == 'super')? document.createElement('select') : document.createElement('input');
         let tempHTML = columnElement.innerHTML;
         columnElement.addEventListener('click', () => {
+            if(data.init_table.my_cell[Object.keys(data.init_table.my_cell)[col_i]].dataName == 'total'){
+                return
+            }
             if(!columnElement.classList.contains('editing')){
                 columnElement.classList.add('editing');
                 const currentValue = columnElement.innerHTML;
